@@ -9,6 +9,9 @@
         crossorigin="anonymous">
 </head>
 <body>
+    {{-- Menampilkan daftar pengguna (users).
+         Menampilkan nomor telepon pengguna (phone).
+         Menampilkan peran (roles) pengguna dalam bentuk tombol. --}}
     <div class="container">
         <div class="card mt-5">
             <div class="card-body">
@@ -17,7 +20,7 @@
                 <table class="table table-bordered table-striped">
                     <thead>
                         <tr>
-                            <th>Nama User</th>
+                            <th>Nama User</th> 
                             <th>Nomor Telepon</th>
                             <th>Roles</th>
                         </tr>
