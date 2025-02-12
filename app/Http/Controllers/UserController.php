@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers; //Namespace membantu menghindari konflik nama dengan kelas lain
 
 use App\Models\User;
+//Mengimpor model User dari direktori App\Models\User.
+//Model ini digunakan untuk berinteraksi dengan tabel users di database
 
 class UserController extends Controller
 {    
