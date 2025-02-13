@@ -16,6 +16,7 @@ return new class extends Migration
     Schema::create('phones', function (Blueprint $table) {
         $table->id();
         $table->unsignedBigInteger('user_id');
+        //unsignedBigInteger adalah tipe data bilangan bulat besar (big integer) tanpa tanda negatif dalam Laravel migration
         $table->string('phone');
         $table->timestamps();
 
@@ -31,5 +32,8 @@ return new class extends Migration
     public function down()
     {
         Schema::dropIfExists('phones');
+        //Schema::dropIfExists('phones'); akan menghapus tabel phones jika ada.
+        //Digunakan dalam metode down() untuk mengembalikan perubahan migration.
+        //Mencegah error jika tabel tidak ada.
     }
 };

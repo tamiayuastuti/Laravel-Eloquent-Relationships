@@ -29,12 +29,23 @@ return new class extends Migration
             //Menjadi PRIMARY KEY → Setiap baris memiliki id unik.
             //Auto-increment → Nilainya akan bertambah otomatis setiap ada data baru
             $table->string('uuid')->unique();
-            
+            //Kode berikut digunakan dalam migration Laravel untuk menambahkan kolom uuid yang bersifat unik pada tabel database
+            //UUID (Universally Unique Identifier) adalah kode unik yang digunakan untuk mengidentifikasi data, mirip dengan id, tetapi dalam format string panjang.
             $table->text('connection');
+            //Kolom connection menyimpan jenis koneksi queue yang digunakan dalam Laravel.
+            //Berguna dalam tabel failed_jobs untuk melihat dari mana job berasal.
+            //Menggunakan text karena bisa menyimpan data panjang tanpa batasan 255 karakter.
             $table->text('queue');
             $table->longText('payload');
+            //Payload adalah data yang disimpan dalam bentuk teks panjang.
             $table->longText('exception');
+            //Membuat kolom exception untuk menyimpan pesan error atau stack trace saat job gagal.
+            //Tipe longText digunakan karena pesan error bisa sangat panjang.
+            //Berguna untuk debugging dan menemukan penyebab kegagalan.
             $table->timestamp('failed_at')->useCurrent();
+            //Membuat kolom failed_at untuk menyimpan waktu kapan job gagal.
+            //Tipe timestamp menyimpan tanggal & waktu.
+            //useCurrent() otomatis menyimpan waktu saat job gagal tanpa perlu diisi manual.
         });
     }
 
@@ -46,5 +57,6 @@ return new class extends Migration
     public function down()
     {
         Schema::dropIfExists('failed_jobs');
+        //Menghapus tabel failed_jobs jika tabel tersebut sudah ada
     }
 };
